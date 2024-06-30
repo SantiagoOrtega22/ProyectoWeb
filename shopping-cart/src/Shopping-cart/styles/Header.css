@@ -1,0 +1,12 @@
+.header-shopping-cart {
+    scroll-snap-align: start;
+    height: 65vh;
+    background-color: #000;
+    border-bottom: solid 1px rgba(255, 0, 0, 0.5);
+  }
+
+.header-shopping-cart > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

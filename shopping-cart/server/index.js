@@ -1,0 +1,85 @@
+import express from 'express';
+import mysql from 'mysql';
+import cors from 'cors';
+const app = express();
+
+
+
+app.use(cors());
+app.use(express.json());
+
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "tomadepedidos",
+});
+app.post("/insertorden",(req,res)=>{
+    const id_cliente=req.body.id_cliente
+    db.query("INSERT INTO orden(id_orden,estado_orden,total_orden,id_cliente) VALUES(?,?,?,?)", [id_cliente,"pendiente",0,id_cliente], (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("dato regitrado con exito");
+      }
+    })
+}
+)
+
+app.post("/insertproduct", (req, res) => {
+    const id_orden=req.body.id_orden
+    const cart=req.body.cart
+    const values=cart.map(producto=>[id_orden,producto.id,producto.quantity])
+    console.log(cart)
+    db.query("INSERT INTO ordenproducto(id_orden,id_produc,cantidad) VALUES ?", [values], (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("producto agregado a la orden");
+      }
+    });
+   
+  
+}); //recibe la peticion extrae los datos y realiza la consulta en la base de datos
+app.post("/insertclient",(req,res)=>{
+    const nombre_cliente=req.body.nombre_cliente
+    const lugar=req.body.lugar
+   db.query("INSERT INTO cliente(nombre_cliente,lugar) VALUES(?,?)", [nombre_cliente,lugar], (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("dato regitrado con exito");
+      }
+    });
+})
+app.post("/insertadmin",(req,res)=>{
+})
+
+app.post("/checkadmin", (req, res) => {
+  const id_adminis = req.body.id_adminis;
+  const password_adminis = req.body.password_adminis;
+  db.query("SELECT * FROM adminis WHERE id_adminis = ? AND password_adminis = ?", [id_adminis, password_adminis], (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send({ success: false });
+    } else {
+      if (result.length > 0) {
+        res.send({ success: true });
+      } else {
+        res.send({ success: false });
+      }
+    }
+  });
+});
+
+
+app.post("/clientes",(req,res)=>{
+  const nombre_cliente=req.body.nombre_cliente
+  const lugar=req.body.lugar
+  db.query('SELECT id_cliente FROM cliente WHERE nombre_cliente = ? AND lugar= ?',[nombre_cliente,lugar],(err,result)=>{
+    res.send(result)}
+  )
+})
+app.listen(3001, () => {
+  console.log("corriendo en el puerto 3001");
+});

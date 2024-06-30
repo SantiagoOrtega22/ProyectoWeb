@@ -1,0 +1,44 @@
+.Producto{
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  width: 90%;
+  height: 20%;
+  border-bottom: 2px solid gray;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  column-gap: 10 px;
+}
+
+.Producto img {
+  border-radius: 4px;
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: block;
+  object-fit: cover;
+}
+
+.Producto div{
+  text-align: center;
+  margin: auto;
+}
+.Boton{
+  width: 12em;
+  background-color:#FF0400;
+  color:white;
+  border: 0px;
+  padding: 5px;
+  margin:10px;
+  border-radius: 4px;
+  text-align: center;  
+  transition: all .3s ease-in-out;
+}
+
+.Boton:hover {
+  transform: scale(1.1);
+}
+
+.informacion{
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+}

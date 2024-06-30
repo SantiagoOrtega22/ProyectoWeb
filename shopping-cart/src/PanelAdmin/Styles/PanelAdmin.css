@@ -1,0 +1,77 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.fondo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.contenedorPedidos {
+    width: 800px;
+    max-width: 90%;
+    height: auto;
+    border-radius: 20px;
+    margin: 20px auto;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    border-radius: 10px;
+    border: solid 2px rgba(255, 0, 0, .8);
+    background-color: rgba(0, 0, 0, .35);
+    backdrop-filter: blur(5px);
+}
+
+.contenedorPedidos>div,
+.contenedorPedidos .headerPedidos,
+.contenedorPedidos .footer,
+.contenedorPedidos .pedidos,
+.contenedorPedidos .pedidos.producto {
+    background-color: #FF0400;
+    padding: 20px;
+
+}
+
+.contenedorPedidos .headerPedidos {
+    color: white;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    border-radius: 5px 5px 0px 0px;
+    text-align: center;
+}
+
+.contenedorPedidos .pedidos {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    grid-column: span 3;
+}
+
+.contenedorPedidos .sidebar {
+    background-color: rgb(0, 214, 0);
+    grid-row: span 2;
+    grid-column: span 1;
+}
+
+.contenedorPedidos .headerPedidos>h2 {
+    font-size: 2.3em;
+}
+
+.contenedorPedidos .footer {
+    background: #FF0400;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    border-radius: 0px 0px 5px 5px;
+
+}
+
+.Producto {
+    background-color: white;
+    margin: 10px;
+    padding: 20px;
+    color: black;
+}

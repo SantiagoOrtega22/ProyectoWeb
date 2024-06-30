@@ -1,0 +1,130 @@
+.cart {
+  display: none;
+  position: fixed;
+  padding: 42px 15px 0 15px;
+  width: 220px;
+  max-height: 93.5vh;
+  right: 0px;
+  top: 0px;
+  overflow: scroll;
+  z-index: 9998;
+  background: #000;
+  }
+
+  .btnCartStyle{
+    display: flex;
+  }
+
+  .btnClearCart{
+    border: solid thin #fff;
+    margin: 2px;
+  }
+  
+  .cart img {
+    aspect-ratio: 17/9;
+    width: 100%;
+  }
+  
+  .cart li {
+    border-bottom: 1px solid #444;
+    padding-bottom: 16px;
+  }
+  
+  .cart footer {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  .cart-button, .login-button{
+    align-items: center;
+    border-radius: 9999px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 138px;
+    top: 8px;
+    transition: scale .3s ease;
+    width: 6em;
+    z-index: 9999;
+  }
+
+  .login-button {
+    right: 8px;
+    top: 8px;
+  }
+
+/* btn */
+.Btn {
+  width: 120px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  background-color: #FF0400;
+  transition-duration: .5s;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.IconContainer {
+  position: absolute;
+  left: -50px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  transition-duration: .5s;
+}
+
+.icon {
+  border-radius: 1px;
+}
+
+.text {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255 , 1);
+  z-index: 1;
+  transition-duration: .5s;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.Btn:hover .IconContainer {
+  transform: translateX(58px);
+  border-radius: 40px;
+  transition-duration: .5s;
+}
+
+.Btn:hover .text {
+  transform: translate(10px,0px);
+  transition-duration: .5s;
+}
+
+.Btn:active {
+  transform: scale(0.95);
+  transition-duration: .5s;
+}
+/* End btn */
+
+  .cart-button:hover, .login-button:hover {
+    scale: 1.1;
+  }
+  
+  .cart-button ~ input:checked ~ .cart {
+    height: 100%;
+    display: block;
+  }
+  
