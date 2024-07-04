@@ -20,7 +20,7 @@ export function Formulario({ setNombre }) {
     const lugar = tipoCliente === "mesa" ? mesa : domicilio;
     var idClient=0
     
-    Axios.post("http://localhost:3001/clientes", {
+    Axios.post("http://localhost:3001/getIdClient", {
         nombre_cliente: usuario,
         lugar: lugar,
       })
