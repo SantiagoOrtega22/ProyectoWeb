@@ -82,8 +82,19 @@ app.post("/checkadmin", (req, res) => {
   });
 });
 
+app.post("/getClientData",(req,res)=>{
+  const id_cliente=req.body.id_cliente
+  db.query('SELECT nombre_cliente,lugar FROM cliente WHERE id_cliente= ?',[id_cliente],(err,result)=>{
+    if(err){
+      console.log(err)
+    }else{
+    res.send(result)
+    }
+  }
+  )
+})
 
-app.post("/clientes",(req,res)=>{
+app.post("/getIdClient",(req,res)=>{
   const nombre_cliente=req.body.nombre_cliente
   const lugar=req.body.lugar
   db.query('SELECT id_cliente FROM cliente WHERE nombre_cliente = ? AND lugar= ?',[nombre_cliente,lugar],(err,result)=>{
