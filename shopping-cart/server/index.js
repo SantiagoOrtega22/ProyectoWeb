@@ -40,7 +40,18 @@ app.post("/insertproduct", (req, res) => {
     });
    
   
-}); //recibe la peticion extrae los datos y realiza la consulta en la base de datos
+});
+
+app.post("/carrito",(req,res)=>{
+  const id_orden=req.body.id_orden
+  db.query("select  p.id_produc as id, p.nombre_produc as title ,p.precio_produc as price,p.Imagen as thumbnail,o.cantidad as quantity from ordenproducto o,producto p where id_orden=? and o.id_produc =p.id_produc ",[id_orden],(err,result)=>{
+  if(err){
+    console.log(err)
+  }else{
+    res.send(result)
+  }
+  })
+})
 app.post("/insertclient",(req,res)=>{
     const nombre_cliente=req.body.nombre_cliente
     const lugar=req.body.lugar
@@ -52,8 +63,7 @@ app.post("/insertclient",(req,res)=>{
       }
     });
 })
-app.post("/insertadmin",(req,res)=>{
-})
+
 
 app.post("/checkadmin", (req, res) => {
   const id_adminis = req.body.id_adminis;
@@ -72,8 +82,19 @@ app.post("/checkadmin", (req, res) => {
   });
 });
 
+app.post("/getClientData",(req,res)=>{
+  const id_cliente=req.body.id_cliente
+  db.query('SELECT nombre_cliente,lugar FROM cliente WHERE id_cliente= ?',[id_cliente],(err,result)=>{
+    if(err){
+      console.log(err)
+    }else{
+    res.send(result)
+    }
+  }
+  )
+})
 
-app.post("/clientes",(req,res)=>{
+app.post("/getIdClient",(req,res)=>{
   const nombre_cliente=req.body.nombre_cliente
   const lugar=req.body.lugar
   db.query('SELECT id_cliente FROM cliente WHERE nombre_cliente = ? AND lugar= ?',[nombre_cliente,lugar],(err,result)=>{

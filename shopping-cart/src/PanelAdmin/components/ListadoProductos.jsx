@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/ListadoProductos.css';
-
-const ListadoProductos = () => {
+import Axios from 'axios';
+const ListadoProductos = ({nombre}) => {
   const [productos, setProductos] = useState([]); 
-
   // Fetch cart data from localStorage on component mount
   useEffect(() => {
-    const products = JSON.parse(localStorage.getItem('cartCopy'));
-    if (products) {
-      setProductos(products);
+    
+    const idUsuario = JSON.parse(localStorage.getItem('newDatos'));
+    Axios.post("http://localhost:3001/carrito",{ 
+      id_orden:idUsuario,}
+  ).then((response)=>{
+    if (productos) {
+      setProductos(response.data);
     }
+  })
+    
   }, []);
 
   const LimpiarProductos = () => {
     setProductos([]);
-    localStorage.removeItem('cartCopy');
+   localStorage.setItem('newDatos', JSON.stringify(1)); 
   };
 
   function Item({ thumbnail, price, title, quantity }) {
     return (
+      
       <li key={title} className='Producto'> 
         <img src={thumbnail} alt={title} />
         <div>
@@ -31,6 +37,7 @@ const ListadoProductos = () => {
 
   return (
     <div>
+    
       <ul>
         {productos.map((product) => (
           <Item

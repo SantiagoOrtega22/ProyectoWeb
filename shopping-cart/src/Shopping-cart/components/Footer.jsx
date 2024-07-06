@@ -7,11 +7,11 @@ export function Footer() {
 
   return (
     <footer className='footer'>
-      <h4>Prueba técnica de React ⚛ － <span>@midudev</span></h4>
-      <h5>Shopping Cart con useContext & useReducer</h5>
-      {/*       {
-        JSON.stringify(cart, null,2)
-      } */}
+      <h4>Arquitectos Web ⚛ </h4>
+      <h5>Jorge Gutierrez - 2215631 － <span>jorge@gmail.com</span></h5>
+      <h5>Yiber Romero - 2221835 － <span>yiber@gmail.com</span></h5>
+      <h5>Santiago Ortega - 2220032 － <span>santiago@gmail.com</span></h5>
+      <h5>Julian Prada - 2212925 － <span>julian@gmail.com</span></h5>
     </footer>
   )
 }

@@ -8,6 +8,7 @@ import { useFilter } from './Hooks/useFilters.js'
 import { CartProvider } from './context/cart.jsx'
 import { Nav } from './components/Nav.jsx'
 
+
 function Shopping() {
   const { filterProducts } = useFilter()
   const filteredProducts = filterProducts(initialProducts)

@@ -1,6 +1,7 @@
 import { useState, useId } from 'react'
 import '../styles/Filters.css'
 import { useFilter } from '../Hooks/useFilters.js'
+import { Footer } from './Footer.jsx'
 
 export function Filters({ onChange }) {
     const { filters, setFilters } = useFilter() // Filtros
@@ -44,6 +45,9 @@ export function Filters({ onChange }) {
                 <button className='button_filter' onClick={handleChangeCategory} value='comida'>Comida</button >
                 <button className='button_filter' onClick={handleChangeCategory} value='te'>Té</button >
                 <button className='button_filter' onClick={handleChangeCategory} value='bebidas'>Bebidas</button >
+            </div>
+            <div>
+                <Footer />
             </div>
 
         </section>

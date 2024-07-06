@@ -14,34 +14,27 @@ export function Formulario({ setNombre }) {
   const [mesa, setMesa] = useState("");
   const [domicilio, setDomicilio] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
+
 
   const handleDatosUsuario = () => {
     const lugar = tipoCliente === "mesa" ? mesa : domicilio;
-    var idClient=0
-    
-    Axios.post("http://localhost:3001/clientes", {
-        nombre_cliente: usuario,
-        lugar: lugar,
-      })
+    var idClient = 0
+
+    Axios.post("http://localhost:3001/getIdClient", {
+      nombre_cliente: usuario,
+      lugar: lugar,
+    })
       .then((response) => {
-        idClient=response.data[0].id_cliente
-        
+        idClient = response.data[0].id_cliente
+
         Axios.post("http://localhost:3001/insertorden", {
-            id_cliente: idClient,
-          })
+          id_cliente: idClient,
+        })
           .then(() => {
             alert("Orden creada!");
             localStorage.setItem("newDatos", JSON.stringify(idClient));
           });
       })
-    
-
-     
-    
-
-    
-
   };
 
   // setDatosUsuario(usuario,mesa)
