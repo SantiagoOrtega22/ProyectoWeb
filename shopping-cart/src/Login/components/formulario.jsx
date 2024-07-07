@@ -18,21 +18,12 @@ export function Formulario({ setNombre }) {
 
   const handleDatosUsuario = () => {
     const lugar = tipoCliente === "mesa" ? mesa : domicilio;
-<<<<<<< HEAD
     var idClient = 0
 
     Axios.post("http://localhost:3001/getIdClient", {
       nombre_cliente: usuario,
       lugar: lugar,
     })
-=======
-    var idClient=0
-    
-    Axios.post("http://localhost:3001/getIdClient", {
-        nombre_cliente: usuario,
-        lugar: lugar,
-      })
->>>>>>> afbc3c4dd3e2f94a72bf7877866a95bbab1bbf0a
       .then((response) => {
         idClient = response.data[0].id_cliente
 

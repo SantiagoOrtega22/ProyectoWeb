@@ -12,7 +12,12 @@ export function PanelAdmin() {
         id_cliente: idUsuario,
     }
     ).then((response) => {
-        setDatosCliente(response.data[0]);
+        if(response.lenght=0){
+        setDatosCliente(response.data[0]);}
+        else{
+            setDatosCliente({nombre_cliente:"No hay cliente",lugar:"---"})
+        }
+        
     })
 
     return (
